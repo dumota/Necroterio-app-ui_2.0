@@ -9,7 +9,7 @@ export default function SomeBlogs({ blogs }: { blogs: IBlogsHome[]})
             <div className="flex items-center justify-center">
             <h1 className="sm:text-2xl text-xl font-bold">Alguns de nossos blogs</h1>
             </div>
-            <div className="flex lg:flex-row flex-col gap-2 lg:px-4 justify-center items-center">
+            <div className="flex lg:flex-row flex-wrap gap-2 lg:px-4 justify-center items-center">
                 {blogs.map((blog) => (
                    <BlogsCard key={blog._id} blog={blog} />
                 ))}

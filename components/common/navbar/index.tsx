@@ -19,7 +19,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="flex items-center w-full justify-between  bg-neutral-950">
+    <nav className="flex items-center w-full justify-between  bg-neutral-950 px-8">
       <div className="flex items-center gap-4">
         <Link href="/" className="h-[100px] w-[100px]">
           <Image
@@ -104,11 +104,11 @@ export default function Navbar() {
                   <Avatar>
                     <Avatar.Image src="broken-link" alt="Arif Logs" />
                     <Avatar.Fallback className="text-neutral-50 text-sm">
-                      AH
+                      A
                     </Avatar.Fallback>
                   </Avatar>
                 </MenuRetro.Trigger>
-                <MenuRetro.Content>
+                <MenuRetro.Content align="start" side="bottom" alignOffset={-10}>
                   <MenuRetro.Item>
                     <Link href="/login">Login</Link>
                   </MenuRetro.Item>

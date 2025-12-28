@@ -2,13 +2,15 @@
 import { Avatar } from "@/components/retroui/Avatar";
 import { Button } from "@/components/retroui/Button";
 import { Menu as MenuRetro } from "@/components/retroui/Menu";
+import { useAuth } from "@/providers/AuthProvider";
+import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Icon } from "@iconify/react";
 export default function Navbar() {
   const [isMobile, setisMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { token, Logout } = useAuth();
   useEffect(() => {
     const handleResize = () => {
       setisMobile(window.innerWidth < 768);
@@ -17,6 +19,10 @@ export default function Navbar() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+ 
+
+
 
   return (
     <nav className="flex items-center w-full justify-between  bg-neutral-950 px-8">
@@ -85,6 +91,7 @@ export default function Navbar() {
         </>
       ) : (
         <>
+        {token ? (
           <div className="flex items-center gap-4">
             <Link href="/" className="text-neutral-50 text-sm">
               Home
@@ -110,33 +117,24 @@ export default function Navbar() {
                 </MenuRetro.Trigger>
                 <MenuRetro.Content align="start" side="bottom" alignOffset={-10}>
                   <MenuRetro.Item>
-                    <Link href="/login">Login</Link>
+                    <Link href="/login">Perfil</Link>
                   </MenuRetro.Item>
                   <MenuRetro.Item>
-                    <Link href="/register">Register</Link>
+                    <button onClick={Logout}>Logout</button>
                   </MenuRetro.Item>
                 </MenuRetro.Content>
               </MenuRetro>
             </div>
           </div>
+        ) : (
+          <div className="flex items-center gap-4 text-neutral-50">
+            <Link href="/login">Login</Link>
+            <Link href="/register">Register</Link>
+          </div>
+        )}
         </>
       )}
-        {/* {isOpen && (
-            <div className="flex flex-col gap-4 fixed right-0">
-              <div className="flex items-center gap-4">
-                <Link href="/" className="text-neutral-50 text-sm">Home</Link>
-              </div>
-              <div className="flex items-center gap-4">
-                <Link href="/" className="text-neutral-50 text-sm">Crie seu Blog</Link>
-              </div>
-              <div className="flex items-center gap-4">
-                <Link href="/" className="text-neutral-50 text-sm">Chat</Link>
-              </div>
-              <div className="flex items-center gap-4">
-                <Link href="/" className="text-neutral-50 text-sm">DashBoard</Link>
-              </div>
-            </div>
-          )} */}
+      
     </nav>
   );
 }

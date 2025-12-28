@@ -21,9 +21,11 @@ const service = axios.create({
 service.interceptors.response.use(
     response => response,
     (error: AxiosError)=>{
+        console.log("error do interceptor: ", error.response?.data);
         const apiError: ApiError ={
+            
             status: error.response?.status || 500,
-            message: (error.response?.data as {message: string})?.message || "Erro ao processar a requisição",
+            message: (error.response?.data as {msg: string})?.msg || "Erro ao processar a requisição",
         };
         return Promise.reject(apiError);
     }

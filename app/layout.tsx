@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from 'next/font/local'
 import "./globals.css";
+import { AuthProvider } from "@/providers/AuthProvider";
 
 const horroFont = localFont({
   src: [{path: '../fonts/HelpMe.ttf', weight: '100', }],
@@ -30,7 +31,9 @@ export default function RootLayout({
       <body
         className={horroFont.className}
       >
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

@@ -1,23 +1,31 @@
 "use client";
 
-import { Alert } from "@/components/retroui/Alert";
 import { ILoginSchema, loginSchema } from "@/schemas/login.schema";
 import { login } from "@/services/AuthService";
+import { destroyAuthCookies, setAuthToken } from "@/services/TokenService";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { createContext, useContext, useState } from "react";
 import { FieldErrors, useForm, UseFormRegister } from "react-hook-form";
+import { toast } from "sonner";
+
 
 interface AuthContextType {
   register: UseFormRegister<ILoginSchema>;
   onSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
   errors: FieldErrors<ILoginSchema>;
+  token: string | null;
+  Logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
 
-  const [error, setError] = useState<string | null>(null);
+ 
+  const router = useRouter();
+  const [token, setToken] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -33,18 +41,36 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const onSubmit = handleSubmit(async (data) => {
     const response = await login(data.email, data.password);
     if (response?.status === 200) {
-      console.log("response: ", response?.data);
+      setAuthToken(response?.data?.access_token || '');
+      setToken(response?.data?.access_token || '');
+      toast.success(response?.message, {
+        richColors: true,
+        position: "top-right",
+        duration: 5000,
+       
+      });
+      router.push("/");
     }
     if (response?.status === 400) {
-      console.log("response: ", response?.message);
-          return (  <Alert status="error" className="flex items-center">
-            <Alert.Title>{response?.message}</Alert.Title>
-          </Alert>);
+      toast.error(response?.message, {
+        richColors: true,
+        position: "top-right",
+        duration: 5000,
+       
+      });
     }
   });
 
+  const Logout = () => {
+    destroyAuthCookies();
+    setToken(null);
+    router.push("/");
+  };
+
+
+
   return (
-    <AuthContext.Provider value={{ register, onSubmit, errors }}>
+    <AuthContext.Provider value={{ register, onSubmit, errors, token, Logout }}>
       {children}
     </AuthContext.Provider>
   );

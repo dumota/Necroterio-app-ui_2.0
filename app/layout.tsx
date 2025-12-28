@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from 'next/font/local'
 import "./globals.css";
 import { AuthProvider } from "@/providers/AuthProvider";
+import { Toaster } from "sonner";
 
 const horroFont = localFont({
   src: [{path: '../fonts/HelpMe.ttf', weight: '100', }],
@@ -34,6 +35,7 @@ export default function RootLayout({
         <AuthProvider>
           {children}
         </AuthProvider>
+        <Toaster richColors />
       </body>
     </html>
   );

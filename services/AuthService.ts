@@ -1,6 +1,7 @@
+import { IRegisterSchema } from "@/schemas/register.schema";
 import { ILoginRequest, ILoginResponse } from "@/types/Auth";
-import { postApiV2 } from "./FetchData";
 import { IResponseApi } from "@/types/ResponseApi";
+import { postApiV2 } from "./FetchData";
 
 const login = async (account: string, password: string):Promise<IResponseApi<ILoginResponse>> => {
   try {
@@ -14,4 +15,14 @@ const login = async (account: string, password: string):Promise<IResponseApi<ILo
   }
 };
 
-export { login };
+const registerUser = async (data: IRegisterSchema):Promise<IResponseApi<unknown>> => {
+  try{
+    const response = await postApiV2<unknown, IRegisterSchema>("/register", data);
+    return response;
+  } catch (err) {
+    return err as IResponseApi<unknown>;
+  }
+}
+
+export { login, registerUser };
+

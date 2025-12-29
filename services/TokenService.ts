@@ -17,7 +17,9 @@ export function destroyAuthCookies() {
   destroyCookie(undefined, tokenConstant.TOKEN, { path: "/" });
 }
 
+
 export function getAuthToken() {
   const cookies = parseCookies();
+  console.log(cookies);
   return cookies[tokenConstant.TOKEN];
 }

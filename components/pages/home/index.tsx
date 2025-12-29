@@ -7,8 +7,7 @@ import SomeBlogs from "./components/someBlogs";
 export async function getServerSideProps() {
   const data = await getApi<ICategoryResponse>("category");
   const dataBloigsHome = await getApi<IBlogsHome[]>("blogsHome");
-  console.log(dataBloigsHome);
- 
+   
   return {
     props: {
       data: data.categories,
@@ -16,7 +15,7 @@ export async function getServerSideProps() {
     },
   };
 }
-
+ 
 export default async function Home() {
   const { props } = await getServerSideProps();
   const data = props.data;

@@ -1,9 +1,11 @@
+import { AuthProvider } from "@/providers/AuthProvider";
+import { GlobalLoadingProvider } from "@/providers/GlobalLoading";
+import { tokenConstant } from "@/types/constants/Token";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
-import { AuthProvider } from "@/providers/AuthProvider";
+import { cookies } from "next/headers";
 import { Toaster } from "sonner";
-import { GlobalLoadingProvider } from "@/providers/GlobalLoading";
+import "./globals.css";
 
 const horroFont = localFont({
   src: [{ path: "../fonts/HelpMe.ttf", weight: "100" }],
@@ -25,18 +27,26 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default  async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const cookieStore = await cookies();
+  const token =  cookieStore.get(tokenConstant.TOKEN)?.value ?? null;
+
   return (
+
+
     <html lang="en">
       <body className={horroFont.className}>
-        <GlobalLoadingProvider>
-          <AuthProvider>{children}</AuthProvider>
-          <Toaster richColors />
-        </GlobalLoadingProvider>
+        <AuthProvider initialToken={token}>
+          <GlobalLoadingProvider>
+            {children}
+            <Toaster richColors />
+          </GlobalLoadingProvider>
+        </AuthProvider>
       </body>
     </html>
   );

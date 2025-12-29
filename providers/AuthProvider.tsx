@@ -21,12 +21,14 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
+export function AuthProvider({ children, initialToken }: { children: React.ReactNode, initialToken: string | null }) {
 
- 
+
+
   const router = useRouter();
-  const [token, setToken] = useState<string | null>(null);
+  const [token, setToken] = useState<string | null>(initialToken || null);
   const {show, hide} = useGlobalLoading();
+ console.log("render");
 
   const {
     register,
@@ -41,6 +43,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   });
 
   const onSubmit = handleSubmit(async (data) => {
+    console.log("onSubmit");
     show();
     const response = await login(data.email, data.password);
     if (response?.status === 200) {

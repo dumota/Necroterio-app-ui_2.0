@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { createContext, useContext, useState } from "react";
 import { FieldErrors, useForm, UseFormRegister } from "react-hook-form";
 import { toast } from "sonner";
+import { useGlobalLoading } from "./GlobalLoading";
 
 
 interface AuthContextType {
@@ -25,6 +26,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
  
   const router = useRouter();
   const [token, setToken] = useState<string | null>(null);
+  const {show, hide} = useGlobalLoading();
 
   const {
     register,
@@ -39,10 +41,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   });
 
   const onSubmit = handleSubmit(async (data) => {
+    show();
     const response = await login(data.email, data.password);
     if (response?.status === 200) {
       setAuthToken(response?.data?.access_token || '');
       setToken(response?.data?.access_token || '');
+      hide();
       toast.success(response?.message, {
         richColors: true,
         position: "top-right",
@@ -52,6 +56,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       router.push("/");
     }
     if (response?.status === 400) {
+      hide();
       toast.error(response?.message, {
         richColors: true,
         position: "top-right",

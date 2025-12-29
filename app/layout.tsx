@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
-import localFont from 'next/font/local'
+import localFont from "next/font/local";
 import "./globals.css";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { Toaster } from "sonner";
+import { GlobalLoadingProvider } from "@/providers/GlobalLoading";
 
 const horroFont = localFont({
-  src: [{path: '../fonts/HelpMe.ttf', weight: '100', }],
-  variable: '--font-horror',
-})
+  src: [{ path: "../fonts/HelpMe.ttf", weight: "100" }],
+  variable: "--font-horror",
+});
 
 export const metadata: Metadata = {
   title: "Necroterio",
-  description: "Necroterio is a platform for creating and managing your own terror blog",
+  description:
+    "Necroterio is a platform for creating and managing your own terror blog",
   icons: {
     icon: "/assets/logo.png",
   },
   openGraph: {
     title: "Necroterio",
-    description: "Necroterio is a platform for creating and managing your own terror blog",
+    description:
+      "Necroterio is a platform for creating and managing your own terror blog",
     images: "/assets/logo.png",
   },
 };
@@ -29,13 +32,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={horroFont.className}
-      >
-        <AuthProvider>
-          {children}
-        </AuthProvider>
-        <Toaster richColors />
+      <body className={horroFont.className}>
+        <GlobalLoadingProvider>
+          <AuthProvider>{children}</AuthProvider>
+          <Toaster richColors />
+        </GlobalLoadingProvider>
       </body>
     </html>
   );

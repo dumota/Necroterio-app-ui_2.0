@@ -11,7 +11,9 @@ export default function RegisterForm() {
 
   const { register, onRegister, formState : { errors } } = useRegisterForm();
 
-
+   
+  
+ 
     return (
 
 
@@ -65,6 +67,7 @@ export default function RegisterForm() {
           </div>
         </Card>
       </form>
+   
     </div>
   );
 }

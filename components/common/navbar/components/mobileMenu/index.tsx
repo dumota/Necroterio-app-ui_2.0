@@ -42,6 +42,8 @@ export default function MobileMenu({
                 <div className="flex flex-col">Eduardo</div>
               </div>
               <DrawerTrigger>
+                <div className="flex flex-col gap-2 justify-start items-start w-full">
+
                 <Link href="/" className="text-md" onClick={handleClose}>
                   Home
                 </Link>
@@ -57,6 +59,7 @@ export default function MobileMenu({
                 <Link href="/login" className="text-md" onClick={handleClose}>
                   Perfil
                 </Link>
+                </div>
               </DrawerTrigger>
             </div>
 

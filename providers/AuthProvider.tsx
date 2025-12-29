@@ -47,10 +47,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setAuthToken(response?.data?.access_token || '');
       setToken(response?.data?.access_token || '');
       hide();
-      toast.success(response?.message, {
+      toast.success("Login realizado com sucesso", {
         richColors: true,
         position: "top-right",
-        duration: 5000,
+        duration: 3000,
+        closeButton: true,
+        style: {
+          fontFamily: "var(--font-horror)",
+        },
        
       });
       router.push("/");

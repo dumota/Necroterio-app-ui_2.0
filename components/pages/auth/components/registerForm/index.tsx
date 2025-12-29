@@ -19,10 +19,11 @@ export default function RegisterForm() {
 
 
 
-    <div className="flex justify-center items-center w-full h-[calc(100vh-160px)]  bg-red-700">
+    <div className="flex justify-center items-center w-full lg:h-[calc(100vh-160px)] h-full lg:p-0 p-4">
       {/* <div className="opacity-50 text-red-800 lg:block hidden">
         <LottieRender animationData={PixelSkull} />
       </div> */}
+      
       <form onSubmit={onRegister}>
         <Card className="flex flex-col justify-center gap-5 lg:w-xl p-5 ">
           <div className="flex flex-col gap-6 p-4">

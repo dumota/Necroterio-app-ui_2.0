@@ -7,6 +7,7 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import MobileMenu from "./components/mobileMenu";
 export default function Navbar() {
   const [isMobile, setisMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -42,52 +43,8 @@ export default function Navbar() {
           <Button variant="outline" size="icon" onClick={() => setIsOpen(!isOpen)}>
             <Icon icon="la:bars" width={30} height={30} className="text-neutral-50" />
           </Button>
-        
-          {/* <div className="flex items-center gap-4">
-            <Link href="/" className="h-[100px] w-[100px]">
-              <Image
-                src="/assets/logo.png"
-                alt="logo"
-                width={100}
-                height={100}
-                className="h-[100px] w-[100px]"
-              />
-            </Link>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link href="/" className="text-neutral-50 text-sm">
-              Home
-            </Link>
-            <Link href="/" className="text-neutral-50 text-sm">
-              Crie seu Blog
-            </Link>
-            <Link href="/" className="text-neutral-50 text-sm">
-              Chat
-            </Link>
-            <Link href="/" className="text-neutral-50 text-sm">
-              DashBoard
-            </Link>
-            <div>
-              <MenuRetro>
-                <MenuRetro.Trigger>
-                  <Avatar>
-                    <Avatar.Image src="broken-link" alt="Arif Logs" />
-                    <Avatar.Fallback className="text-neutral-50 text-sm">
-                      AH
-                    </Avatar.Fallback>
-                  </Avatar>
-                </MenuRetro.Trigger>
-                <MenuRetro.Content>
-                  <MenuRetro.Item>
-                    <Link href="/login">Login</Link>
-                  </MenuRetro.Item>
-                  <MenuRetro.Item>
-                    <Link href="/register">Register</Link>
-                  </MenuRetro.Item>
-                </MenuRetro.Content>
-              </MenuRetro>
-            </div>
-          </div> */}
+          <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} token={token} />
+ 
         </>
       ) : (
         <>

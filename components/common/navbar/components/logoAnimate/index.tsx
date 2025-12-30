@@ -61,7 +61,7 @@ export default function LogoAnimate() {
             ease: "easeInOut",
           }}
           style={{
-            background: "linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff)",
+            background: "linear-gradient(90deg, #990099, #006666, #990099)",
           }}
         />
       </motion.div>

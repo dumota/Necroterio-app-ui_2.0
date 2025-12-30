@@ -1,18 +1,30 @@
 "use client";
+import { UseProfileFeatchData } from "@/hooks/Profile/UseProfileFetchData";
 import { useAuth } from "@/providers/AuthProvider";
-import { jwtDecode } from "jwt-decode";
-
+import { decodeToken } from "@/services/TokenService";
 
 export default function ProfilePageComponent() {
-    
-    const { token } = useAuth();
-    const tokenDecoded = jwtDecode(token || "");
 
-    return (
-        <div>
-            <h1>Profile</h1>
-            {token}
-            {tokenDecoded.exp && new Date(tokenDecoded.exp * 1000).toLocaleDateString()}
-        </div>
-    )
+    const { token } = useAuth();
+    const tokenDecoded = decodeToken(token || "");
+   
+    const {data ,isLoading} = UseProfileFeatchData(
+        {id : tokenDecoded?.id || ""}
+    );
+
+
+
+    
+ 
+  return (
+    <div>
+      <div className="flex flex-col items-center justify-center">
+        <h1>Profile</h1>
+      </div>
+      <div>
+      </div>
+      
+
+    </div>
+  );
 }

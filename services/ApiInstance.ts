@@ -1,18 +1,22 @@
 import axios, { AxiosError } from "axios";
 
+
+
 export interface ApiError{
     status: number;
     message: string;
 }
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL_API + "/api/" || "http://127.0.0.1:5000/api/";
+// const cookieStore = await cookies();
+// const token =  cookieStore.get(tokenConstant.TOKEN)?.value ?? null;
 
 const service = axios.create({
     baseURL: baseURL,
     headers:{
         "Content-Type": "application/json",
         "Accept": "application/json",
-        // Authorization : `Bearer ${localStorage.getItem("token")}`
+        //  Authorization : `Bearer ${token}`
     },
     timeout: 10000,
     

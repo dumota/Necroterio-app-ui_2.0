@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import { cookies } from "next/headers";
 import { Toaster } from "sonner";
 import "./globals.css";
+import ReactQueryProvider from "@/providers/ReactQueryProvider";
 
 const horroFont = localFont({
   src: [{ path: "../fonts/HelpMe.ttf", weight: "100" }],
@@ -27,25 +28,24 @@ export const metadata: Metadata = {
   },
 };
 
-export default  async function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   const cookieStore = await cookies();
-  const token =  cookieStore.get(tokenConstant.TOKEN)?.value ?? null;
+  const token = cookieStore.get(tokenConstant.TOKEN)?.value ?? null;
 
   return (
-
-
     <html lang="en">
       <body className={horroFont.className}>
         <AuthProvider initialToken={token}>
-          <GlobalLoadingProvider>
-            {children}
-            <Toaster richColors />
-          </GlobalLoadingProvider>
+          <ReactQueryProvider>
+            <GlobalLoadingProvider>
+              {children}
+              <Toaster richColors />
+            </GlobalLoadingProvider>
+          </ReactQueryProvider>
         </AuthProvider>
       </body>
     </html>

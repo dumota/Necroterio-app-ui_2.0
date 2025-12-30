@@ -1,4 +1,6 @@
 import { tokenConstant } from "@/types/constants/Token";
+import { IJwtDecode } from "@/types/JwtDecode";
+import { jwtDecode } from "jwt-decode";
 import { setCookie, destroyCookie, parseCookies } from "nookies";
 
 export function setAuthToken(token: string) {
@@ -22,4 +24,9 @@ export function getAuthToken() {
   const cookies = parseCookies();
   console.log(cookies);
   return cookies[tokenConstant.TOKEN];
+}
+
+export function decodeToken(token: string) {
+  if(!token) return null;
+  return jwtDecode<IJwtDecode>(token);
 }

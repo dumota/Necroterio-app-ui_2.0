@@ -11,15 +11,14 @@ export default function RegisterForm() {
 
   const { register, onRegister, formState : { errors } } = useRegisterForm();
 
-   
-  
+
  
     return (
 
 
 
 
-    <div className="flex justify-center items-center w-full lg:h-[calc(100vh-160px)] h-full lg:p-0 p-4">
+    <div className="flex justify-center items-center w-full lg:py-5 lg:p-0 p-4">
       {/* <div className="opacity-50 text-red-800 lg:block hidden">
         <LottieRender animationData={PixelSkull} />
       </div> */}
@@ -39,8 +38,8 @@ export default function RegisterForm() {
 
             <div className="flex flex-col gap-2">
               <Label className="text-sm">Email</Label>
-              <Input type="email" placeholder="Email" {...register("email")} />
-              {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+              <Input type="email" placeholder="Email" {...register("account")} />
+              {errors.account && <p className="text-red-500 text-sm">{errors.account.message}</p>}
             </div>
 
             <div className="flex flex-col gap-2">

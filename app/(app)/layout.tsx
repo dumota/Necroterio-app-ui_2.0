@@ -5,5 +5,9 @@ export default function AppLayoutRoot({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <AppLayout>{children}</AppLayout>;
+  return (
+    <AppLayout>
+      <div className="">{children}</div>
+    </AppLayout>
+  );
 }

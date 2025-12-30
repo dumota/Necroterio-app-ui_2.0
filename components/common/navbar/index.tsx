@@ -4,10 +4,11 @@ import { Button } from "@/components/retroui/Button";
 import { Menu as MenuRetro } from "@/components/retroui/Menu";
 import { useAuth } from "@/providers/AuthProvider";
 import { Icon } from "@iconify/react";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+
 import MobileMenu from "./components/mobileMenu";
+import LogoAnimate from "./components/logoAnimate";
 export default function Navbar() {
   const [isMobile, setisMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -28,15 +29,7 @@ export default function Navbar() {
   return (
     <nav className="flex items-center w-full justify-between  bg-neutral-950 px-8" id="navbar">
       <div className="flex items-center gap-4">
-        <Link href="/" className="h-[100px] w-[100px]">
-          <Image
-            src="/assets/logo.png"
-            alt="logo"
-            width={100}
-            height={100}
-            className="h-[100px] w-[100px]"
-          />
-        </Link>
+        <LogoAnimate />
       </div>
       {isMobile ? (
         <>

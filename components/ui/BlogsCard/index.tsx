@@ -5,7 +5,9 @@ import { IBlogsHome } from "@/types/BlogsHome";
 import { motion } from "framer-motion";
 import { EyeIcon } from "lucide-react";
 import Image from "next/image";
-export default function BlogsCard({ blog }: { blog: IBlogsHome }) {
+export default function BlogsCard({ blog, onClick }: { blog: IBlogsHome , onClick: () => void }) {
+
+  
   return (
     <motion.div
     initial={{ opacity: 0, y: 100 }}
@@ -31,7 +33,7 @@ export default function BlogsCard({ blog }: { blog: IBlogsHome }) {
         </Card.Header>
         <Card.Content className="flex flex-col items-center text-sm">
           {/* <p className="text-lg font-semibold max-w-[320px] overflow-x-hidden text-ellipsis max-height-[20px] ">{blog.description}</p> */}
-          <Button className="w-full">
+          <Button className="w-full" onClick={onClick}>
             <div className="flex items-center gap-2 text-center justify-center w-full">
               <EyeIcon className="w-4 h-4" />
               <span className="text-sm">Ver mais</span>

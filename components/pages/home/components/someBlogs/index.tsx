@@ -2,8 +2,10 @@
 import BlogsCard from "@/components/ui/BlogsCard";
 import { IBlogsHome } from "@/types/BlogsHome";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function SomeBlogs({ blogs }: { blogs: IBlogsHome[] }) {
+  const router = useRouter();
   return (
     <div className="flex flex-col gap-4">
       <motion.div
@@ -19,7 +21,7 @@ export default function SomeBlogs({ blogs }: { blogs: IBlogsHome[] }) {
       </motion.div>
       <div className="flex lg:flex-row flex-wrap gap-2 lg:px-4 justify-center items-center">
         {blogs.map((blog) => (
-          <BlogsCard key={blog._id} blog={blog} />
+          <BlogsCard key={blog._id} blog={blog} onClick={() => router.push(`/blog/${blog._id}/detail`)} />
         ))}
       </div>
     </div>

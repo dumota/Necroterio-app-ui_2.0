@@ -47,7 +47,7 @@ export default function MobileMenu({
                 <Link href="/" className="text-md" onClick={handleClose}>
                   Home
                 </Link>
-                <Link href="/" className="  text-md" onClick={handleClose}>
+                <Link href="/blog/newBlog" className="  text-md" onClick={handleClose}>
                   Crie seu Blog
                 </Link>
                 <Link href="/" className="text-md" onClick={handleClose}>

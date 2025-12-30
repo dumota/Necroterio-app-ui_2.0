@@ -11,7 +11,7 @@ export default function DesktopMenu() {
         <Link href="/" className="text-neutral-50 text-sm">
           Home
         </Link>
-        <Link href="/" className="text-neutral-50 text-sm">
+        <Link href="/blog/newBlog" className="text-neutral-50 text-sm">
           Crie seu Blog
         </Link>
         <Link href="/" className="text-neutral-50 text-sm">

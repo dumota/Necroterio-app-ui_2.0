@@ -56,7 +56,7 @@ export default function MobileMenu({
                 <Link href="/" className="text-md" onClick={handleClose}>
                   DashBoard
                 </Link>
-                <Link href="/login" className="text-md" onClick={handleClose}>
+                <Link href="/profile" className="text-md" onClick={handleClose}>
                   Perfil
                 </Link>
                 </div>

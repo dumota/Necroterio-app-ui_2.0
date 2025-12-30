@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function LogoAnimate() {
   return (
-    <div className="flex flex-row items-center gap-2">
+    <div className="flex flex-row items-center lg:gap-2 gap-1">
       <Link href="/" className="h-[100px] w-[100px]">
         <Image
           src="/assets/logo.png"
@@ -22,7 +22,7 @@ export default function LogoAnimate() {
         className="cursor-pointer relative"
       >
         <motion.h1
-          className="text-red-500 font-bold text-2xl relative z-10"
+          className="text-red-500 font-bold lg:text-2xl text-xl relative z-10"
           variants={{
             initial: {
               textShadow: "0 0 10px rgba(239, 68, 68, 0.5), 0 0 20px rgba(239, 68, 68, 0.3)",
@@ -41,6 +41,7 @@ export default function LogoAnimate() {
           }}
         >
           Necroterio
+
         </motion.h1>
         <motion.div
           className="absolute inset-0 z-0"

@@ -12,6 +12,7 @@ export const UseProfileFeatchData = ({ id } : IProfileProps)=>{
         queryKey: ["profile", id],
         queryFn: ()=> getProfileById(id) as Promise<IProfile>,
         staleTime: 1000 * 60 * 10,
+    
     });
 }
 

@@ -1,7 +1,7 @@
 import { IBlog } from "@/types/Blog";
 import { IResponseApi } from "@/types/ResponseApi";
-import { getApiV2 } from "./FetchData";
-import { ICommentsBlogResponse } from "@/types/CommentsBlog";
+import { getApiV2, postApiV2 } from "./FetchData";
+import { ICommentsBlogResponse, ICreateCommentBlog, IReplyBlog } from "@/types/CommentsBlog";
 
 
 const getBlogDetailById = async (id: string) => {
@@ -22,4 +22,13 @@ const getCommentsBlogById = async (blog_id: string) => {
   }
 };
 
-export { getBlogDetailById, getCommentsBlogById };
+const  createCommentBlog = async (comment: ICreateCommentBlog) => {
+  try {
+    const response = await postApiV2<IReplyBlog, ICreateCommentBlog>(`comment`, comment);
+    return response;
+  } catch (error) {
+    return error as IResponseApi<IReplyBlog>;
+  }
+};
+
+export { getBlogDetailById, getCommentsBlogById, createCommentBlog };

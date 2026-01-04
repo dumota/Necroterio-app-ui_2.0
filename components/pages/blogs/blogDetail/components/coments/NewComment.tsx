@@ -1,9 +1,10 @@
 import { Button } from "@/components/retroui/Button";
 import { useComment } from "../../hooks/UseComment";
+import { useBlogContext } from "@/providers/BlogProvider";
 
 export default function NewComment() {
-  const { register, onSubmit, errors } = useComment();
-
+  const { blog } = useBlogContext();
+  const { register, onSubmit, errors } = useComment({ blog: blog });
   return (
     <div>
       <h1>New Comment</h1>

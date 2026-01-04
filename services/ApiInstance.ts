@@ -1,4 +1,5 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
+import { getAuthToken } from "./TokenService";
 
 
 
@@ -8,20 +9,32 @@ export interface ApiError{
 }
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL_API + "/api/" || "http://127.0.0.1:5000/api/";
-// const cookieStore = await cookies();
-// const token =  cookieStore.get(tokenConstant.TOKEN)?.value ?? null;
 
 const service = axios.create({
     baseURL: baseURL,
     headers:{
         "Content-Type": "application/json",
         "Accept": "application/json",
-        //  Authorization : `Bearer ${token}`
     },
     timeout: 10000,
     
 });
 
+// Interceptor de requisição para adicionar o token dinamicamente
+service.interceptors.request.use(
+    (config: InternalAxiosRequestConfig) => {
+        const token = getAuthToken();
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
+
+// Interceptor de resposta para tratar erros
 service.interceptors.response.use(
     response => response,
     (error: AxiosError)=>{

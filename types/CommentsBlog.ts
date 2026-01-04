@@ -23,3 +23,9 @@ export interface ICommentsBlogResponse {
     total: number;
     
 }
+
+export interface ICreateCommentBlog{
+    content: string;
+    blog_id: string;
+    blog_user_id: string;
+}

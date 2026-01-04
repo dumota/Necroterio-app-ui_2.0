@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import DesktopMenu from "./components/desktopMenu";
 import LogoAnimate from "./components/logoAnimate";
 import MobileMenu from "./components/mobileMenu";
+import { ModeToggle } from "@/components/ui/toogleTheme";
 export default function Navbar() {
   const [isMobile, setisMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -50,6 +51,9 @@ export default function Navbar() {
         )}
         </>
       )}
+      <div>
+        <ModeToggle />
+      </div>
       
     </nav>
   );

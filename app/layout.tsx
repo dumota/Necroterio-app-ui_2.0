@@ -7,6 +7,7 @@ import { cookies } from "next/headers";
 import { Toaster } from "sonner";
 import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const horroFont = localFont({
   src: [{ path: "../fonts/HelpMe.ttf", weight: "100" }],
@@ -39,14 +40,21 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={horroFont.className}>
-        <AuthProvider initialToken={token}>
-          <ReactQueryProvider>
-            <GlobalLoadingProvider>
-              {children}
-              <Toaster richColors />
-            </GlobalLoadingProvider>
-          </ReactQueryProvider>
-        </AuthProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AuthProvider initialToken={token}>
+            <ReactQueryProvider>
+              <GlobalLoadingProvider>
+                {children}
+                <Toaster richColors />
+              </GlobalLoadingProvider>
+            </ReactQueryProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

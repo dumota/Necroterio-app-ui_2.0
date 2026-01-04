@@ -3,6 +3,7 @@ import { IBlogsHome } from "@/types/BlogsHome";
 import { ICategoryResponse } from "@/types/Category";
 import CategoryListPolaroid from "./components/categoryListPolaroid";
 import SomeBlogs from "./components/someBlogs";
+import Infos from "./components/infos";
 
 export async function getServerSideProps() {
   const data = await getApi<ICategoryResponse>("category");
@@ -26,6 +27,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col gap-14 lg:py-0 py-5">
       <CategoryListPolaroid categories={data} />
+      <Infos />
       <SomeBlogs blogs={dataBloigsHome} />
     </div>
   );

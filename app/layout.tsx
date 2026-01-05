@@ -38,13 +38,12 @@ export default async function RootLayout({
   const token = cookieStore.get(tokenConstant.TOKEN)?.value ?? null;
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={horroFont.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
+          defaultTheme="system"
         >
           <AuthProvider initialToken={token}>
             <ReactQueryProvider>

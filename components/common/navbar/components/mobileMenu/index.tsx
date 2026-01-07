@@ -8,6 +8,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { ModeToggle } from "@/components/ui/toogleTheme";
 import { useAuth } from "@/providers/AuthProvider";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
@@ -29,6 +30,7 @@ export default function MobileMenu({
     <Drawer open={isOpen} onOpenChange={setIsOpen} direction="right">
       <DrawerTitle className="hidden">Menu</DrawerTitle>
       <DrawerContent>
+        
         {token ? (
           <div className="flex flex-col h-full">
             <div className="flex flex-col justify-start items-start p-4 gap-4">
@@ -63,7 +65,8 @@ export default function MobileMenu({
               </DrawerTrigger>
             </div>
 
-            <div className="flex justify-end items-end p-4 h-full">
+            <div className="flex justify-end items-end p-4 h-full gap-2">
+             
               <Button
                 onClick={() => {
                   Logout();
@@ -73,6 +76,7 @@ export default function MobileMenu({
                 <Icon icon="la:sign-out-alt" width={20} height={20} />
                 Logout
               </Button>
+              <ModeToggle />
             </div>
           </div>
         ) : (

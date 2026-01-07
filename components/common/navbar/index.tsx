@@ -22,39 +22,49 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
- 
-
-
-
   return (
-    <nav className="flex items-center w-full justify-between  bg-neutral-950 px-8" id="navbar">
+    <nav
+      className="flex items-center w-full justify-between  bg-neutral-950 px-8"
+      id="navbar"
+    >
       <div className="flex items-center gap-4">
         <LogoAnimate />
       </div>
       {isMobile ? (
         <>
-          <Button variant="outline" size="icon" onClick={() => setIsOpen(!isOpen)}>
-            <Icon icon="la:bars" width={30} height={30} className="text-neutral-50" />
+        <div className="absolute right-8 top-1/2 -translate-y-1/2">
+
+
+        </div>
+
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <Icon
+              icon="la:bars"
+              width={30}
+              height={30}
+              className="text-neutral-50"
+            />
           </Button>
           <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} token={token} />
- 
         </>
       ) : (
         <>
-        {token ? (
-          <DesktopMenu />
-        ) : (
-          <div className="flex items-center gap-4 text-neutral-50">
-            <Link href="/login">Login</Link>
-            <Link href="/register">Register</Link>
-          </div>
-        )}
+          {token ? (
+            <DesktopMenu />
+          ) : (
+            <div className="flex items-center gap-4 text-neutral-50">
+              <ModeToggle />
+
+              <Link href="/login">Login</Link>
+              <Link href="/register">Register</Link>
+            </div>
+          )}
         </>
       )}
-      <div>
-        <ModeToggle />
-      </div>
-      
     </nav>
   );
 }

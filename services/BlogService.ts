@@ -6,15 +6,9 @@ import {
   ICreateCommentBlog,
   IReplyBlog,
 } from "@/types/CommentsBlog";
-import { IBlog, IBlogResponse } from "@/types/Blog";
+import { IBlog, IBlogResponse, ICreateBlogRequest } from "@/types/Blog";
 
-interface ICreateBlogRequest {
-  title: string;
-  description: string;
-  content: string;
-  imageUrl: string;
-  categoryId?: string;
-}
+
 
 const createBlog = async (
   data: ICreateBlogRequest
@@ -43,9 +37,6 @@ const updateBlog = async (
   }
 };
 
-// const getBlogById = async (id: string): Promise<IResponseApi<IBlog>> => {
-//   return getApiV2<IBlog>(`blogs/${id}`);
-// };
 
 const getBlogDetailById = async (id: string): Promise<IResponseApi<IBlog>> => {
   try {
@@ -83,7 +74,6 @@ const getCommentsBlogById = async (blog_id: string) => {
 export {
   createBlog,
   updateBlog,
-  // getBlogById,
   getBlogDetailById,
   createCommentBlog,
   getCommentsBlogById,

@@ -18,7 +18,6 @@ const login = async (account: string, password: string):Promise<IResponseApi<ILo
 const registerUser = async (data: IRegisterSchema):Promise<IResponseApi<unknown>> => {
   try{
     const response = await postApiV3_Message< IRegisterSchema>("/register", data);
-    console.log(response);
     return response;
   } catch (err) {
     return err as IResponseApi<unknown>;

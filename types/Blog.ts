@@ -17,6 +17,14 @@ export interface IBlog {
   __v: number;
 }
 
+export interface ICreateBlogRequest {
+  title: string;
+  description: string;
+  content: string;
+  imageUrl: string;
+  categoryId?: string;
+}
+
 
 export  interface IBlogResponse {
   message: string;

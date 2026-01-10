@@ -2,8 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  images:{
-    remotePatterns:[
+  images: {
+    remotePatterns: [
       {
         protocol: 'https',
         hostname: 'localhost',
@@ -13,10 +13,15 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
-     
       },
-    ]
-  }
+    ],
+  },
+  // Configuração para upload de arquivos (App Router)
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '10mb', // Limite de 10MB para server actions
+    },
+  },
 };
 
 export default nextConfig;

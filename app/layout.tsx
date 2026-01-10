@@ -9,10 +9,11 @@ import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 
-const horroFont = localFont({
-  src: [{ path: "../fonts/HelpMe.ttf", weight: "100" }],
-  variable: "--font-horror",
-});
+// const horroFont = localFont({
+//   src: [{ path: "../fonts/HelpMe.ttf", weight: "100" }],
+//   variable: "--font-horror",
+// });
+
 
 export const metadata: Metadata = {
   title: "Necroterio",
@@ -39,7 +40,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={horroFont.className}>
+      <body >
         <ThemeProvider
           attribute="class"
           enableSystem

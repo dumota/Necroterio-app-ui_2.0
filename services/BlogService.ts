@@ -6,7 +6,8 @@ import {
   ICreateCommentBlog,
   IReplyBlog,
 } from "@/types/CommentsBlog";
-import { IBlog, IBlogResponse, ICreateBlogRequest } from "@/types/Blog";
+import { IBlog, IBlogByCategoryResponse, IBlogResponse, ICreateBlogRequest } from "@/types/Blog";
+import { IPaginate } from "@/types/Utils";
 
 
 
@@ -21,7 +22,7 @@ const updateBlog = async (
   data: Partial<ICreateBlogRequest>
 ): Promise<IResponseApi<IBlog>> => {
   try {
-    const response = await service.put<IBlog>(`blogs/${id}`, data);
+    const response = await service.put<IBlog>(`blog/${id}`, data);
     return {
       status: response.status,
       data: response.data,
@@ -71,10 +72,23 @@ const getCommentsBlogById = async (blog_id: string) => {
   }
 };
 
+const getBlogsByCategoryId = async(categoryId: string, paginate? : IPaginate) =>{
+  try {
+    const queryParams = new URLSearchParams();
+    if (paginate?.limit) queryParams.append('limit', paginate.limit.toString());
+    if (paginate?.skip) queryParams.append('skip', paginate.skip.toString());
+    const response = await getApiV2<IBlogByCategoryResponse>(`blogs/${categoryId}?${queryParams.toString()}`);
+    return response;
+  } catch (error) {
+    return error as IResponseApi<IBlog[]>;
+  }
+}
+
 export {
   createBlog,
   updateBlog,
   getBlogDetailById,
   createCommentBlog,
   getCommentsBlogById,
+  getBlogsByCategoryId,
 };

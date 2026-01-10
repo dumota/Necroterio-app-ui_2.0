@@ -4,7 +4,11 @@ import { Input } from "@/components/retroui/Input";
 import { Label } from "@/components/retroui/Label";
 import { Menu } from "@/components/retroui/Menu";
 import { blogFormSchema, IBlogFormData } from "@/schemas/blog.schema";
-import { createBlog, getBlogDetailById, updateBlog } from "@/services/BlogService";
+import {
+  createBlog,
+  getBlogDetailById,
+  updateBlog,
+} from "@/services/BlogService";
 import { getCategories } from "@/services/CategoryService";
 import { ImageUpload } from "@/services/ImageUploadService";
 import { IBlog } from "@/types/Blog";
@@ -16,6 +20,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import InputTerror from "@/components/terrorui/Input/Input";
 
 const ReactQuill = dynamic(() => import("@/components/ui/Editor/ReactQuill"), {
   ssr: false,
@@ -35,7 +40,9 @@ export default function BlogForm({ blogId, initialData }: BlogFormProps) {
   const router = useRouter();
   const isEditMode = !!blogId;
   const [isLoading, setIsLoading] = useState(false);
-  const [imagePreview, setImagePreview] = useState<string | null>(initialData?.thumbnail || null);
+  const [imagePreview, setImagePreview] = useState<string | null>(
+    initialData?.thumbnail || null
+  );
   const [imageFile, setImageFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -70,9 +77,11 @@ export default function BlogForm({ blogId, initialData }: BlogFormProps) {
 
   const content = watch("content");
   const selectedCategoryId = watch("categoryId");
-  
+
   // Encontrar categoria selecionada
-  const selectedCategory = categories.find((cat) => cat._id === selectedCategoryId);
+  const selectedCategory = categories.find(
+    (cat) => cat._id === selectedCategoryId
+  );
 
   // Carregar dados do blog se estiver em modo de edição
   useEffect(() => {
@@ -147,10 +156,10 @@ export default function BlogForm({ blogId, initialData }: BlogFormProps) {
   const onSubmit = async (data: IBlogFormData) => {
     try {
       setIsLoading(true);
-      
+
       // Upload da imagem ANTES de enviar ao backend
       let imageUrl = data.imageUrl || "";
-      
+
       // Se há um arquivo novo selecionado, fazer upload
       if (imageFile) {
         toast.loading("Fazendo upload da imagem...");
@@ -222,19 +231,23 @@ export default function BlogForm({ blogId, initialData }: BlogFormProps) {
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <div>
           <Label htmlFor="title">Título</Label>
-          <Input
+          {/* <Input
             id="title"
             {...register("title")}
             aria-invalid={!!errors.title}
           />
           {errors.title && (
-            <p className="text-sm text-destructive mt-1">{errors.title.message}</p>
-          )}
+            <p className="text-sm text-destructive mt-1">
+              {errors.title.message}
+            </p>
+          )} */}
+
+          <InputTerror {...register("title")} error={errors.title?.message} />
         </div>
 
         <div>
           <Label htmlFor="image">Capa do card</Label>
-          
+
           {imagePreview ? (
             <div className="relative w-full rounded-lg border-2 border-neutral-300 dark:border-neutral-700 overflow-hidden group">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -289,10 +302,7 @@ export default function BlogForm({ blogId, initialData }: BlogFormProps) {
                 }}
                 className="hidden"
               />
-              <input
-                type="hidden"
-                {...register("imageUrl")}
-              />
+              <input type="hidden" {...register("imageUrl")} />
               <div className="flex flex-col items-center gap-3">
                 <Upload
                   className={`w-12 h-12 ${
@@ -315,14 +325,18 @@ export default function BlogForm({ blogId, initialData }: BlogFormProps) {
         </div>
 
         {errors.imageUrl && (
-          <p className="text-sm text-destructive mt-1">{errors.imageUrl.message}</p>
+          <p className="text-sm text-destructive mt-1">
+            {errors.imageUrl.message}
+          </p>
         )}
 
         <div>
           <Label htmlFor="category">Categoria</Label>
           {isLoadingCategories ? (
             <div className="px-4 py-2 border-2 border-neutral-300 dark:border-neutral-700 rounded">
-              <p className="text-sm text-neutral-500">Carregando categorias...</p>
+              <p className="text-sm text-neutral-500">
+                Carregando categorias...
+              </p>
             </div>
           ) : (
             <Menu>
@@ -334,7 +348,9 @@ export default function BlogForm({ blogId, initialData }: BlogFormProps) {
                   aria-invalid={!!errors.categoryId}
                 >
                   <span className={selectedCategory ? "" : "text-neutral-500"}>
-                    {selectedCategory ? selectedCategory.name : "Selecione uma categoria"}
+                    {selectedCategory
+                      ? selectedCategory.name
+                      : "Selecione uma categoria"}
                   </span>
                   <ChevronDown className="w-4 h-4" />
                 </Button>
@@ -347,9 +363,15 @@ export default function BlogForm({ blogId, initialData }: BlogFormProps) {
                     <Menu.Item
                       key={category._id}
                       onClick={() => {
-                        setValue("categoryId", category._id, { shouldValidate: true });
+                        setValue("categoryId", category._id, {
+                          shouldValidate: true,
+                        });
                       }}
-                      className={selectedCategoryId === category._id ? "bg-primary text-primary-foreground" : ""}
+                      className={
+                        selectedCategoryId === category._id
+                          ? "bg-primary text-primary-foreground"
+                          : ""
+                      }
                     >
                       {category.name}
                     </Menu.Item>
@@ -358,12 +380,11 @@ export default function BlogForm({ blogId, initialData }: BlogFormProps) {
               </Menu.Content>
             </Menu>
           )}
-          <input
-            type="hidden"
-            {...register("categoryId")}
-          />
+          <input type="hidden" {...register("categoryId")} />
           {errors.categoryId && (
-            <p className="text-sm text-destructive mt-1">{errors.categoryId.message}</p>
+            <p className="text-sm text-destructive mt-1">
+              {errors.categoryId.message}
+            </p>
           )}
         </div>
 
@@ -375,17 +396,23 @@ export default function BlogForm({ blogId, initialData }: BlogFormProps) {
             aria-invalid={!!errors.description}
           />
           {errors.description && (
-            <p className="text-sm text-destructive mt-1">{errors.description.message}</p>
+            <p className="text-sm text-destructive mt-1">
+              {errors.description.message}
+            </p>
           )}
         </div>
         <div>
           <Label htmlFor="content">Conteúdo</Label>
           <ReactQuill
-            setBody={(value) => setValue("content", value, { shouldValidate: true })}
+            setBody={(value) =>
+              setValue("content", value, { shouldValidate: true })
+            }
             body={content}
           />
           {errors.content && (
-            <p className="text-sm text-destructive mt-1">{errors.content.message}</p>
+            <p className="text-sm text-destructive mt-1">
+              {errors.content.message}
+            </p>
           )}
         </div>
 
@@ -399,7 +426,11 @@ export default function BlogForm({ blogId, initialData }: BlogFormProps) {
             Cancelar
           </Button>
           <Button variant="default" type="submit" disabled={isLoading}>
-            {isLoading ? "Salvando..." : isEditMode ? "Atualizar blog" : "Criar blog"}
+            {isLoading
+              ? "Salvando..."
+              : isEditMode
+              ? "Atualizar blog"
+              : "Criar blog"}
           </Button>
         </div>
       </form>

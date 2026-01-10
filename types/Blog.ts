@@ -25,6 +25,11 @@ export interface ICreateBlogRequest {
   categoryId?: string;
 }
 
+export interface IBlogByCategoryResponse {
+  blogs: IBlog[];
+  count: number;
+}
+
 
 export  interface IBlogResponse {
   message: string;

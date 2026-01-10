@@ -1,9 +1,11 @@
+import CreateBlogForm from "@/components/pages/blogs/createBlogForm";
+import { Suspense } from "react";
 
 
 export default function NewBlogPage() {
   return (
-    <div>
-      <h1>crei seu novo blog seu maldito</h1>
-    </div>
+   <Suspense fallback={<div>Loading...</div>}>
+    <CreateBlogForm />
+   </Suspense>
   );
 }

@@ -3,6 +3,7 @@ import { Carousel } from "@/components/retroui/Carousel";
 import PolaroidCard from "@/components/ui/PolaroidCard";
 import { ICategory } from "@/types/Category";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export interface iCategoryListPolaroidProps {
   categories: ICategory[];
@@ -12,6 +13,7 @@ export default function CategoryListPolaroid({
   categories,
 }: iCategoryListPolaroidProps) {
 
+  const router = useRouter();
   const nextPolaroid = () => {
     const nextButton = document.getElementById("next-polaroid");
     nextButton?.click();
@@ -33,6 +35,7 @@ export default function CategoryListPolaroid({
                     imageUrl={category.thumbnail}
                     description={category.name}
                     rotate={Number(category.rotateStyle || 0)}
+                    onClick={() => router.push(`/blog/category/${category._id}`)}
                   />
                 </div>
               );
@@ -61,6 +64,7 @@ export default function CategoryListPolaroid({
                 imageUrl={category.thumbnail}
                 description={category.name}
                 rotate={Number(category.rotateStyle || 0)}
+                onClick={() => router.push(`/blog/category/${category._id}`)}
               />
             </div>
           );

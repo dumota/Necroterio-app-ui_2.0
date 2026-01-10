@@ -1,10 +1,53 @@
-import { IBlog } from "@/types/Blog";
+import { postApiV2, getApiV2 } from "./FetchData";
 import { IResponseApi } from "@/types/ResponseApi";
-import { getApiV2, postApiV2 } from "./FetchData";
-import { ICommentsBlogResponse, ICreateCommentBlog, IReplyBlog } from "@/types/CommentsBlog";
+import service from "./ApiInstance";
+import {
+  ICommentsBlogResponse,
+  ICreateCommentBlog,
+  IReplyBlog,
+} from "@/types/CommentsBlog";
+import { IBlog, IBlogResponse } from "@/types/Blog";
 
+interface ICreateBlogRequest {
+  title: string;
+  description: string;
+  content: string;
+  imageUrl: string;
+  categoryId?: string;
+}
 
-const getBlogDetailById = async (id: string) => {
+const createBlog = async (
+  data: ICreateBlogRequest
+): Promise<IResponseApi<IBlogResponse>> => {
+  return postApiV2<IBlogResponse, ICreateBlogRequest>("blog", data);
+};
+
+const updateBlog = async (
+  id: string,
+  data: Partial<ICreateBlogRequest>
+): Promise<IResponseApi<IBlog>> => {
+  try {
+    const response = await service.put<IBlog>(`blogs/${id}`, data);
+    return {
+      status: response.status,
+      data: response.data,
+      message: "Sucesso",
+    };
+  } catch (err: unknown) {
+    const error = err as { response?: { status?: number; data?: { msg?: string } }; message?: string };
+    return {
+      status: error.response?.status || 500,
+      data: null,
+      message: error.response?.data?.msg || error.message || "Erro ao atualizar blog",
+    };
+  }
+};
+
+// const getBlogById = async (id: string): Promise<IResponseApi<IBlog>> => {
+//   return getApiV2<IBlog>(`blogs/${id}`);
+// };
+
+const getBlogDetailById = async (id: string): Promise<IResponseApi<IBlog>> => {
   try {
     const response = await getApiV2<IBlog>(`blogDetail/${id}`);
     return response;
@@ -13,22 +56,35 @@ const getBlogDetailById = async (id: string) => {
   }
 };
 
-const getCommentsBlogById = async (blog_id: string) => {
-  try {
-    const response = await getApiV2<ICommentsBlogResponse>(`comments/blog/${blog_id}`);
-    return response;
-  } catch (error) {
-    return error as IResponseApi<ICommentsBlogResponse>;
-  }
-};
 
-const  createCommentBlog = async (comment: ICreateCommentBlog) => {
+const createCommentBlog = async (comment: ICreateCommentBlog) => {
   try {
-    const response = await postApiV2<IReplyBlog, ICreateCommentBlog>(`comment`, comment);
+    const response = await postApiV2<IReplyBlog, ICreateCommentBlog>(
+      `comment`,
+      comment
+    );
     return response;
   } catch (error) {
     return error as IResponseApi<IReplyBlog>;
   }
 };
 
-export { getBlogDetailById, getCommentsBlogById, createCommentBlog };
+const getCommentsBlogById = async (blog_id: string) => {
+  try {
+    const response = await getApiV2<ICommentsBlogResponse>(
+      `comments/blog/${blog_id}`
+    );
+    return response;
+  } catch (error) {
+    return error as IResponseApi<ICommentsBlogResponse>;
+  }
+};
+
+export {
+  createBlog,
+  updateBlog,
+  // getBlogById,
+  getBlogDetailById,
+  createCommentBlog,
+  getCommentsBlogById,
+};

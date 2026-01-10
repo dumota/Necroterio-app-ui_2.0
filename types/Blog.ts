@@ -18,3 +18,10 @@ export interface IBlog {
 }
 
 
+export  interface IBlogResponse {
+  message: string;
+  newBlog: IBlog;
+}
+
+
+

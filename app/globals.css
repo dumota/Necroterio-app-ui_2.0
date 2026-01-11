@@ -83,4 +83,13 @@
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+  font-family: "Special Elite", monospace;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Creepster", cursive;
 }

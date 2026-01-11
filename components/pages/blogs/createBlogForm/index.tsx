@@ -20,7 +20,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import InputTerror from "@/components/terrorui/Input/Input";
+
 
 const ReactQuill = dynamic(() => import("@/components/ui/Editor/ReactQuill"), {
   ssr: false,
@@ -242,7 +242,7 @@ export default function BlogForm({ blogId, initialData }: BlogFormProps) {
             </p>
           )} */}
 
-          <InputTerror {...register("title")} error={errors.title?.message} />
+          <Input {...register("title")} />
         </div>
 
         <div>

@@ -17,7 +17,7 @@ const preview: Preview = {
       test: 'todo'
     },
     backgrounds: {
-      default: 'light',
+      default: 'dark',
       values: [
         {
           name: 'light',
@@ -25,7 +25,7 @@ const preview: Preview = {
         },
         {
           name: 'dark',
-          value: '#1a1a1a',
+          value: '#0a0a0a',
         },
       ],
     },

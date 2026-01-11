@@ -20,7 +20,7 @@ export default function BlogDetail() {
   }
   return (
     <div className="flex flex-col gap-4 p-5 px-6 lg:px-10">
-      <BlogProvider initialBlog={data ?? ({} as IBlog)}>
+      <BlogProvider initialBlog={data?.data ?? ({} as IBlog)}>
         <HeaderBlog
           title={data?.data?.title ?? ""}
           createdAt={data?.data?.createdAt ?? ""}

@@ -8,7 +8,7 @@ export default function DesktopMenu() {
   const { Logout } = useAuth();
   return (
     <div className="flex items-center gap-4">
-      <ModeToggle side="top"/>
+      <ModeToggle/>
       <Link href="/" className="text-neutral-50 text-sm">
         Home
       </Link>

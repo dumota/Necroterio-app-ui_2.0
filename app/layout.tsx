@@ -9,10 +9,12 @@ import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 
-// const horroFont = localFont({
-//   src: [{ path: "../fonts/HelpMe.ttf", weight: "100" }],
-//   variable: "--font-horror",
-// });
+const helpMeFont = localFont({
+  src: "../fonts/HelpMe.ttf",
+  variable: "--font-helpme",
+  display: "swap",
+  preload: true,
+});
 
 
 export const metadata: Metadata = {
@@ -40,7 +42,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body >
+      <body className={helpMeFont.variable}>
         <ThemeProvider
           attribute="class"
           enableSystem

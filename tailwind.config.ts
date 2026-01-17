@@ -10,6 +10,11 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        helpme: ["var(--font-helpme)", "sans-serif"],
+        horror: ['Creepster', 'cursive'],
+        typewriter: ['Special Elite', 'monospace'],
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -70,7 +75,7 @@ export default {
           800: "hsl(var(--bone-800))",
           900: "hsl(var(--bone-900))",
         },
-      },
+      }
     },
   },
   plugins: [],

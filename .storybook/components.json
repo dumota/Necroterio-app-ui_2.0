@@ -1,0 +1,65 @@
+
+{
+    "components": [
+        {
+            "name": "popover",
+            "path": "../stories/popover.stories.tsx"
+        },
+        {
+            "name": "dialog",
+            "path": "../stories/dialog.stories.tsx"
+        },
+        {
+            "name": "input",
+            "path": "../stories/input.stories.tsx"
+        },
+        {
+            "name": "textarea",
+            "path": "../stories/textarea.stories.tsx"
+        },
+        {
+            "name": "label",
+            "path": "../stories/label.stories.tsx"
+        },
+        {
+            "name": "palet colors",
+            "path": "../stories/paletcolors.stories.tsx"
+        },
+        {
+            "name": "polaroid",
+            "path": "../stories/polaroid.stories.tsx"
+        },
+        {
+            "name": "vhs overlay",
+            "path": "../stories/vhs-overlay.stories.tsx"
+        },
+        {
+            "name": "vhs card",
+            "path": "../stories/vhs-card.stories.tsx"
+        },
+        {
+            "name": "feature card",
+            "path": "../stories/feature-card.stories.tsx"
+        },
+        {
+            "name": "button",
+            "path": "../stories/button.stories.tsx"
+        },
+        {
+            "name": "action button",
+            "path": "../stories/action-button.stories.tsx"
+        },
+        {
+            "name": "typography",
+            "path": "../stories/typography.stories.tsx"
+        },
+        {
+            "name": "badge",
+            "path": "../stories/badge.stories.tsx"
+        },
+        {
+            "name": "alert",
+            "path": "../stories/alert.stories.tsx"
+        }
+    ]
+}

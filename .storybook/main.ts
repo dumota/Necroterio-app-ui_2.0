@@ -2,14 +2,14 @@ import type { StorybookConfig } from '@storybook/nextjs-vite';
 import { mergeConfig } from 'vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import components from './components.json' with { type: 'json' };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const config: StorybookConfig = {
   "stories": [
-    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-    "../stories/**/*.mdx"
+    ...components.components.map((component) => component.path)
   ],
   "addons": [
     "@chromatic-com/storybook",
@@ -23,7 +23,7 @@ const config: StorybookConfig = {
     options: {},
   },
   "staticDirs": [
-    "..\\public"
+    "../public"
   ],
   async viteFinal(config) {
     return mergeConfig(config, {

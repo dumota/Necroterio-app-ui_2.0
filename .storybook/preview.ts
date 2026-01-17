@@ -20,16 +20,23 @@ const preview: Preview = {
       default: 'dark',
       values: [
         {
-          name: 'light',
-          value: '#ffffff',
-        },
-        {
           name: 'dark',
           value: '#0a0a0a',
         },
       ],
+      disable: false,
     },
   },
+  decorators: [
+    (Story) => {
+      // Aplica a classe 'dark' ao body para ativar o tema dark do Tailwind
+      if (typeof document !== 'undefined') {
+        document.documentElement.classList.add('dark');
+        document.body.classList.add('dark');
+      }
+      return Story();
+    },
+  ],
 };
 
 export default preview;

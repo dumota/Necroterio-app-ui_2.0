@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Popover, PopoverTrigger, PopoverContent } from './popover';
-import { Button } from './button';
+import { Popover, PopoverTrigger, PopoverContent } from '@/components/terrorui/popover';
+import { Button } from '@/components/terrorui/button';
 
 const meta = {
   title: 'TerrorUI/Popover',

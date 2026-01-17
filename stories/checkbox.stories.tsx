@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Checkbox } from './checkbox';
-import { Label } from './label';
+import { Checkbox } from '@/components/terrorui/checkbox';
+import { Label } from '@/components/terrorui/label';
 
 const meta = {
   title: 'TerrorUI/Checkbox',

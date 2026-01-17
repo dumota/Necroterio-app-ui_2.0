@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './card';
-import { Button } from './button';
+import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from '@/components/terrorui/card';
+import { Button } from '@/components/terrorui/button';
 
 const meta = {
   title: 'TerrorUI/Card',

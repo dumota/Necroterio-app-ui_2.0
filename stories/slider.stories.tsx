@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Slider } from './slider';
+import { Slider } from '@/components/terrorui/slider';
 
 const meta = {
   title: 'TerrorUI/Slider',

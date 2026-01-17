@@ -1,9 +1,15 @@
 import type { StorybookConfig } from '@storybook/nextjs-vite';
+import { mergeConfig } from 'vite';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const config: StorybookConfig = {
   "stories": [
-    "../components/terrorui/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-    "../components/terrorui/**/*.mdx"
+    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../stories/**/*.mdx"
   ],
   "addons": [
     "@chromatic-com/storybook",
@@ -12,9 +18,21 @@ const config: StorybookConfig = {
     "@storybook/addon-docs",
     "@storybook/addon-onboarding"
   ],
-  "framework": "@storybook/nextjs-vite",
+  "framework": {
+    name: "@storybook/nextjs-vite",
+    options: {},
+  },
   "staticDirs": [
     "..\\public"
-  ]
+  ],
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      resolve: {
+        alias: {
+          '@': path.resolve(__dirname, '..'),
+        },
+      },
+    });
+  },
 };
 export default config;

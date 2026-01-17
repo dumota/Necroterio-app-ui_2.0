@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Separator } from './separator';
+import { Separator } from '@/components/terrorui/separator';
 
 const meta = {
   title: 'TerrorUI/Separator',

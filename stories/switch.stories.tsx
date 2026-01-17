@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Switch } from './switch';
-import { Label } from './label';
+import { Switch } from '@/components/terrorui/switch';
+import { Label } from '@/components/terrorui/label';
 
 const meta = {
   title: 'TerrorUI/Switch',

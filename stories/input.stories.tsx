@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Input } from './input';
+import { Input } from '@/components/terrorui/input';
 
 const meta = {
   title: 'TerrorUI/Input',

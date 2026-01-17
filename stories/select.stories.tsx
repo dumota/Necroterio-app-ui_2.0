@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/terrorui/select';
 
 const meta = {
   title: 'TerrorUI/Select',

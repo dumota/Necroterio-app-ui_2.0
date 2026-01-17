@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './dialog';
-import { Button } from './button';
-import { Input } from './input';
-import { Label } from './label';
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/terrorui/dialog';
+import { Button } from '@/components/terrorui/button';
+import { Input } from '@/components/terrorui/input';
+import { Label } from '@/components/terrorui/label';
 
 const meta = {
   title: 'TerrorUI/Dialog',

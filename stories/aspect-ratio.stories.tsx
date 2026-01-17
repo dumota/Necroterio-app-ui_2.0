@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { AspectRatio } from './aspect-ratio';
+import { AspectRatio } from '@/components/terrorui/aspect-ratio';
 
 const meta = {
   title: 'TerrorUI/AspectRatio',

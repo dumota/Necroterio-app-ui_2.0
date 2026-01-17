@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/terrorui/tabs';
 
 const meta = {
   title: 'TerrorUI/Tabs',

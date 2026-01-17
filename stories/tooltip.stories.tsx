@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from './tooltip';
-import { Button } from './button';
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/terrorui/tooltip';
+import { Button } from '@/components/terrorui/button';
 
 const meta = {
   title: 'TerrorUI/Tooltip',

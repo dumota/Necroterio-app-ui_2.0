@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './accordion';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/terrorui/accordion';
 
 const meta = {
   title: 'TerrorUI/Accordion',

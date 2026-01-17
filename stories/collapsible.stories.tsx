@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from './collapsible';
-import { Button } from './button';
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/terrorui/collapsible';
+import { Button } from '@/components/terrorui/button';
 import { ChevronDown } from 'lucide-react';
 
 const meta = {

@@ -44,7 +44,7 @@ export default function CategoryListPolaroid({
                   showScratches={false} 
                   showBloodStain={false} 
                   showTape={false} 
-                  onClick={() => router.push(`/blog/category/${category._id}`)} 
+                  onClick={() => router.push(`/blog/blogsList?category=${category._id}`)} 
                   caption={category.name} 
                   rotation={Number(category.rotateStyle || 0)}
                   className="w-full h-full"
@@ -76,7 +76,7 @@ export default function CategoryListPolaroid({
               <Polaroid img={category.thumbnail}
                 caption={category.name}
                 rotation={Number(category.rotateStyle || 0)}
-                onClick={() => router.push(`/blog/category/${category._id}`)}/>
+                onClick={() => router.push(`/blog/blogsList?category=${category._id}`)}/>
             </div>
           );
         })}

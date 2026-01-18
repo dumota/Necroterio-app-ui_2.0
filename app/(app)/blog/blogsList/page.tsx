@@ -23,7 +23,6 @@ export default async function BlogsList({
 
     return (
         <div>
-            <h1>Blogs List - Page: {page}</h1>
             <ListBlogs blogs={blogs} />
         </div>
     )

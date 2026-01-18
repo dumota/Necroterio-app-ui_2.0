@@ -1,10 +1,17 @@
 "use client";
 
 import { Skeleton } from "@/components/terrorui/skeleton";
+import Image from "next/image";
 
 export default function HeroSectionSkeleton() {
   return (
     <section className="relative min-h-[calc(80vh-56px)] md:min-h-[calc(80vh-64px)] flex items-center justify-center overflow-hidden px-4">
+      {/* Background */}
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat">
+        <Image src={"/assets/hero-bg.jpg"} alt="Hero Background" fill className="object-cover" />
+        <div className="absolute inset-0 border-4 border-border/30" />
+      </div>
+      
       <div className="relative z-10 text-center w-full max-w-4xl mx-auto py-12 md:py-0">
         <Skeleton className="h-24 md:h-40 w-full max-w-4xl mx-auto mb-6 md:mb-8" />
         <Skeleton className="h-8 md:h-10 w-full max-w-2xl mx-auto mb-8 md:mb-10" />

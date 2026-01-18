@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 
-export default function HeaderListBlogs() {
+export default function HeaderListBlogs({ count }: { count: number }) {
     return (
 
         <header className="relative z-10 border-b-2 border-blood/30 bg-background/95 backdrop-blur-sm">
@@ -27,7 +27,7 @@ export default function HeaderListBlogs() {
                             Acervo de horrores
                         </h1>
                         <p className="text-muted-foreground font-mono text-xs md:text-sm mt-1">
-                            0 registros encontrados
+                            {count} registros encontrados
                         </p>
                     </div>
 

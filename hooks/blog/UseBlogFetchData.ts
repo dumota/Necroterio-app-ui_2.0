@@ -1,8 +1,9 @@
 import { getBlogDetailById, getBlogsByQuery, getCommentsBlogById } from "@/services/BlogService";
-import { IBlog, IBlogByQueryResponse } from "@/types/Blog";
+import { IBlog } from "@/types/Blog";
 import { ICommentsBlogResponse } from "@/types/CommentsBlog";
 import { IResponseApi } from "@/types/ResponseApi";
 import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "next/navigation";
 
 export interface IUseBlogFetchData {
     id: string;
@@ -20,21 +21,31 @@ export const useCommentsBlogFetchData = ({id}: IUseBlogFetchData) => {
         queryFn: () => getCommentsBlogById(id),
     });
 }
-
-export const useBlogsByQueryFetchData = (query: string, initialData: IBlog[]) => {
-    return useQuery<IResponseApi<IBlogByQueryResponse>, Error>({
-        queryKey: ["blogsByQuery", query],
-        queryFn: () => getBlogsByQuery(query),
-        initialData: {
-            data: {
-                blogs: initialData,
-                count: initialData.length,
-                totalPages: 1,
-                currentPage: 1,
-                limit: 10,
-            },
-            message: "Blogs fetched successfully",
-            status: 200,
+export const useBlogsByQueryFetchData = (initialData: IBlog[]) => {
+    const searchParams = useSearchParams();
+    console.log( "searchParams", searchParams);
+  
+    const page = searchParams.get("page") ?? "1";
+    const limit = searchParams.get("limit") ?? "10";
+    const category = searchParams.get("category") ?? "";
+    const author = searchParams.get("author") ?? "";
+    const title = searchParams.get("title") ?? "";
+  
+    const queryString = `page=${page}&limit=${limit}&category_id=${category}&author=${author}&title=${title}`;
+  
+    return useQuery({
+      queryKey: ["blogsByQuery", page, limit, category],
+      queryFn: () => getBlogsByQuery(queryString),
+      initialData: {
+        data: {
+          blogs: initialData,
+          count: initialData.length,
+          totalPages: 1,
+          currentPage: Number(page),
+          limit: Number(limit),
         },
+        message: "Blogs fetched successfully",
+        status: 200,
+      },
     });
-}
+  };

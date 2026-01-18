@@ -8,6 +8,7 @@ import { Toaster } from "sonner";
 import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { CategoryProvider } from "@/providers/CategoryProvider";
 
 const helpMeFont = localFont({
   src: "../fonts/HelpMe.ttf",
@@ -51,7 +52,9 @@ export default async function RootLayout({
           <AuthProvider initialToken={token}>
             <ReactQueryProvider>
               <GlobalLoadingProvider>
-                {children}
+                <CategoryProvider>
+                  {children}
+                </CategoryProvider>
                 <Toaster richColors />
               </GlobalLoadingProvider>
             </ReactQueryProvider>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/components/terrorui/skeleton";
 import { Carousel } from "@/components/retroui/Carousel";
 
 export default function CategoryListPolaroidSkeleton() {

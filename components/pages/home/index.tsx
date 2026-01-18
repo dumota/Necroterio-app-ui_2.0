@@ -32,8 +32,8 @@ export default async function Home() {
       <CategoryListPolaroid categories={data} />
       {/* <Infos /> */}
       <BlogsSection categories={data}/>
-      <SomeBlogs blogs={props.blogsHome} />
       <CTASection />
+      <SomeBlogs blogs={props.blogsHome} />
       
     </div>
   );

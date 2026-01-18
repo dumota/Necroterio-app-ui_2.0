@@ -1,7 +1,6 @@
 "use client";
 
-import { Skeleton } from "@/components/ui/skeleton";
-import { Card } from "@/components/retroui/Card";
+import { Skeleton } from "@/components/terrorui/skeleton";
 
 export default function SomeBlogsSkeleton() {
   return (
@@ -12,19 +11,16 @@ export default function SomeBlogsSkeleton() {
       </div>
       
       {/* Blogs grid skeleton */}
-      <div className="flex lg:flex-row flex-wrap gap-2 lg:px-4 justify-center items-center">
-        {[...Array(6)].map((_, index) => (
-          <Card key={index} className="lg:w-[320px] lg:h-[400px] w-[250px] h-[300px] shadow-none">
-            <Card.Content>
-              <Skeleton className="lg:h-[200px] h-[100px] w-full" />
-            </Card.Content>
-            <Card.Header>
-              <Skeleton className="h-6 w-3/4 mb-2" />
-            </Card.Header>
-            <Card.Content className="flex flex-col items-center">
-              <Skeleton className="h-10 w-full" />
-            </Card.Content>
-          </Card>
+      <div className="flex lg:flex-row flex-col gap-4 justify-center">
+        {[...Array(3)].map((_, index) => (
+          <div key={index} className="w-full lg:w-[320px] bg-card border border-border overflow-hidden">
+            <Skeleton className="h-48 md:h-64 w-full" />
+            <div className="p-4 md:p-6">
+              <Skeleton className="h-6 w-3/4 mb-3" />
+              <Skeleton className="h-4 w-full mb-2" />
+              <Skeleton className="h-4 w-5/6" />
+            </div>
+          </div>
         ))}
       </div>
     </div>

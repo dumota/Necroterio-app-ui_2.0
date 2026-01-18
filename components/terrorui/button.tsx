@@ -5,25 +5,25 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow active:shadow-none hover:translate-y-1 active:translate-y-2 active:translate-x-1",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-md hover:shadow active:shadow-none hover:translate-y-1 active:translate-y-2 active:translate-x-1",
+        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground shadow-md hover:shadow active:shadow-none hover:translate-y-1 active:translate-y-2 active:translate-x-1",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-md hover:shadow active:shadow-none hover:translate-y-1 active:translate-y-2 active:translate-x-1",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        blood: "bg-blood text-primary-foreground hover:bg-blood/80 shadow-blood font-horror",
-        toxic: "bg-toxic text-accent-foreground hover:bg-toxic/80 shadow-toxic font-horror",
-        bone: "bg-bone text-background hover:bg-bone/80",
-        "outline-blood": "border border-blood text-blood hover:bg-blood/10 font-typewriter",
-        "outline-toxic": "border border-toxic text-toxic hover:bg-toxic/10 font-typewriter",
-        "outline-bone": "border border-bone text-bone hover:bg-bone/10 font-typewriter",
+        blood: "bg-blood text-primary-foreground hover:bg-blood/80 shadow-md shadow-blood hover:shadow active:shadow-none font-horror hover:translate-y-1 active:translate-y-2 active:translate-x-1",
+        toxic: "bg-toxic text-accent-foreground hover:bg-toxic/80 shadow-md shadow-toxic hover:shadow active:shadow-none font-horror hover:translate-y-1 active:translate-y-2 active:translate-x-1",
+        bone: "bg-bone text-background hover:bg-bone/80 shadow-md hover:shadow active:shadow-none hover:translate-y-1 active:translate-y-2 active:translate-x-1",
+        "outline-blood": "border border-blood text-blood hover:bg-blood/10 font-typewriter shadow-md hover:shadow active:shadow-none hover:translate-y-1 active:translate-y-2 active:translate-x-1",
+        "outline-toxic": "border border-toxic text-toxic hover:bg-toxic/10 font-typewriter shadow-md hover:shadow active:shadow-none hover:translate-y-1 active:translate-y-2 active:translate-x-1",
+        "outline-bone": "border border-bone text-bone hover:bg-bone/10 font-typewriter shadow-md hover:shadow active:shadow-none hover:translate-y-1 active:translate-y-2 active:translate-x-1",
         "ghost-blood": "text-blood hover:bg-blood/20 font-typewriter",
         "ghost-toxic": "text-toxic hover:bg-toxic/20 font-typewriter",
-        gradient: "gradient-blood text-primary-foreground font-horror animate-pulse-glow",
+        gradient: "gradient-blood text-primary-foreground font-horror animate-pulse-glow shadow-md hover:shadow active:shadow-none hover:translate-y-1 active:translate-y-2 active:translate-x-1",
       },
       size: {
         default: "h-10 px-4 py-2",

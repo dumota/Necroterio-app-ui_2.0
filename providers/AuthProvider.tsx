@@ -28,7 +28,7 @@ export function AuthProvider({ children, initialToken }: { children: React.React
   const router = useRouter();
   const [token, setToken] = useState<string | null>(initialToken || null);
   const {show, hide} = useGlobalLoading();
- console.log("render");
+
 
   const {
     register,

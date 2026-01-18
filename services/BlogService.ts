@@ -6,7 +6,7 @@ import {
   ICreateCommentBlog,
   IReplyBlog,
 } from "@/types/CommentsBlog";
-import { IBlog, IBlogByCategoryResponse, IBlogResponse, ICreateBlogRequest } from "@/types/Blog";
+import { IBlog, IBlogByCategoryResponse, IBlogByQueryResponse, IBlogResponse, ICreateBlogRequest } from "@/types/Blog";
 import { IPaginate } from "@/types/Utils";
 
 
@@ -84,6 +84,15 @@ const getBlogsByCategoryId = async(categoryId: string, paginate? : IPaginate) =>
   }
 }
 
+const getBlogsByQuery = async(query?: string | undefined)=>{
+  try {
+    const response = await getApiV2<IBlogByQueryResponse>(`blogs/all?${query ?? ""}`);
+    return response;
+  } catch (error) {
+    return error as IResponseApi<IBlogByQueryResponse>;
+  }
+}
+
 export {
   createBlog,
   updateBlog,
@@ -91,4 +100,5 @@ export {
   createCommentBlog,
   getCommentsBlogById,
   getBlogsByCategoryId,
+  getBlogsByQuery,
 };

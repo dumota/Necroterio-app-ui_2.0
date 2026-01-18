@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 interface FeatureCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  image: string;
+  image?: string;
   title: string;
   description: string;
   showGlitch?: boolean;
@@ -11,7 +11,7 @@ interface FeatureCardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
-  ({ image = "assets/default-bg-blog.jpg", title, description, className, showGlitch = true, showBloodDrip = true, ...rest }, ref) => {
+  ({ image, title, description, className, showGlitch = true, showBloodDrip = true, ...rest }, ref) => {
     return (
       <div
         ref={ref}
@@ -23,13 +23,15 @@ const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
       >
         {/* Image */}
         <div className="relative h-48 md:h-64 w-full shrink-0 overflow-hidden">
+          {image && (
           <Image
             width={100}
             height={100}
             src={image}
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2"
-          />
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
 
           {/* Glitch overlay on hover */}

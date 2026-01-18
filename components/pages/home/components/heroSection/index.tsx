@@ -1,3 +1,4 @@
+import MouseScrool from "@/components/effects/MouseScrool";
 import { Button } from "@/components/terrorui/button";
 import Image from "next/image";
 
@@ -32,9 +33,7 @@ export default function HeroSection() {
   
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
-          <div className="w-6 h-10 border-2 border-bone/50 rounded-full flex justify-center pt-2">
-            <div className="w-1 h-3 bg-blood rounded-full animate-pulse" />
-          </div>
+         <MouseScrool />  
         </div>
       </section>
     )

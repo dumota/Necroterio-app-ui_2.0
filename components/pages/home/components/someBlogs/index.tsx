@@ -18,10 +18,13 @@ export default function SomeBlogs({ blogs }: { blogs: IBlogsHome[] }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center flex-col gap-2">
         <h1 className="sm:text-2xl text-xl font-bold">
           POSTAGENS RECENTES
         </h1>
+        <p className="text-sm text-muted-foreground font-vhs">
+          Encarando as últimas postagens do nosso blog.
+        </p>
       </div>
       {/* mobile version */}
       <div className="block lg:hidden">
@@ -73,7 +76,7 @@ export default function SomeBlogs({ blogs }: { blogs: IBlogsHome[] }) {
 
       </div>
       <div className="flex items-center justify-center">
-        <Button variant="link">Investigar <Search className="w-4 h-4" /></Button>
+        <Button variant="link" onClick={() => router.push(`/blog/blogsList?page=1`)}>Investigar <Search className="w-4 h-4" /></Button>
       </div>
     </div>
   );

@@ -36,5 +36,13 @@ export  interface IBlogResponse {
   newBlog: IBlog;
 }
 
+export interface IBlogByQueryResponse {
+  blogs: IBlog[];
+  count: number;
+  totalPages: number;
+  currentPage: number;
+  limit: number;
+}
+
 
 

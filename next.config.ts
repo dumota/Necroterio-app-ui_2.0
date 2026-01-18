@@ -17,7 +17,11 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'https://via.placeholder.com',
+      },
     ],
   },
   // Configuração para upload de arquivos (App Router)

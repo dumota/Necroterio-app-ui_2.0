@@ -57,7 +57,7 @@ export default function Navbar() {
             <DesktopMenu />
           ) : (
             <div className="flex items-center gap-4 text-neutral-50">
-              <ModeToggle />
+              {/* <ModeToggle /> */}
 
               <Link href="/login">Login</Link>
               <Link href="/register">Register</Link>

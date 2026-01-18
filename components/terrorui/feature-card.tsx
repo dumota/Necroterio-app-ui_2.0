@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface FeatureCardProps extends React.HTMLAttributes<HTMLDivElement> {
   image: string;
@@ -10,19 +11,21 @@ interface FeatureCardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
-  ({ image, title, description, className, showGlitch = true, showBloodDrip = true, ...rest }, ref) => {
+  ({ image = "assets/default-bg-blog.jpg", title, description, className, showGlitch = true, showBloodDrip = true, ...rest }, ref) => {
     return (
       <div
         ref={ref}
         className={cn(
-          "group relative bg-card border border-border hover:border-blood transition-all duration-500 overflow-hidden",
+          "group relative bg-card border border-border hover:border-blood transition-all duration-500 overflow-hidden w-full",
           className
         )}
         {...rest}
       >
         {/* Image */}
-        <div className="relative h-48 md:h-64 overflow-hidden">
-          <img
+        <div className="relative h-48 md:h-64 w-full shrink-0 overflow-hidden">
+          <Image
+            width={100}
+            height={100}
             src={image}
             alt={title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2"

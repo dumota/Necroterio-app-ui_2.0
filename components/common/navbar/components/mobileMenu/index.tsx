@@ -76,7 +76,7 @@ export default function MobileMenu({
                 <Icon icon="la:sign-out-alt" width={20} height={20} />
                 Logout
               </Button>
-              <ModeToggle />
+              {/* <ModeToggle /> */}
             </div>
           </div>
         ) : (

@@ -248,4 +248,18 @@ h6 {
   .font-helpme {
     font-family: var(--font-helpme), sans-serif;
   }
+
+  /* Film Strip Scroll Animation */
+  @keyframes scroll-film {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll-film var(--scroll-duration, 30s) linear infinite;
+  }
 }

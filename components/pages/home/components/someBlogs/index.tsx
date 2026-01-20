@@ -6,6 +6,7 @@ import { Carousel } from "@/components/retroui/Carousel";
 import { ArrowLeft, ArrowRight, Search } from "lucide-react";
 import { useRecentBlogs } from "./UseRecentBlogs";
 import { Button } from "@/components/terrorui/button";
+import VhsCard from "@/components/terrorui/vhsCard";
 
 export default function SomeBlogs({ blogs }: { blogs: IBlogsHome[] }) {
   const router = useRouter();
@@ -32,7 +33,7 @@ export default function SomeBlogs({ blogs }: { blogs: IBlogsHome[] }) {
           <Carousel.Content className="-ml-2 md:-ml-4">
             {b.map((blog) => (
               <Carousel.Item key={blog._id} className="pl-2 md:pl-4 basis-full sm:basis-1/2">
-                <FeatureCard
+                {/* <FeatureCard
                   image={blog.thumbnail || ""}
                   title={blog.title}
                   description={blog.description}
@@ -40,7 +41,23 @@ export default function SomeBlogs({ blogs }: { blogs: IBlogsHome[] }) {
                   showBloodDrip={true}
                   onClick={() => router.push(`/blog/${blog._id}/detail`)}
                   className="w-full cursor-pointer"
-                />
+                /> */}
+                <div className="px-5 py-5">
+
+                 <VhsCard
+            key={blog._id}
+            title={blog.title}
+            excerpt={blog.description}
+            image={blog.thumbnail ?? "assets/default-bg-blog.jpg"}
+            author={blog.user[0]?.name ?? ""}
+            authorAvatar={blog.user[0]?.avatar ?? ""}
+            date={blog.createdAt}
+            category={blog.category?.name ?? ""}
+            views={10}
+            likes={blog.likes.length}
+            comments={10}
+          />
+                </div>
               </Carousel.Item>
             ))}
           </Carousel.Content>
@@ -62,15 +79,28 @@ export default function SomeBlogs({ blogs }: { blogs: IBlogsHome[] }) {
       {/* Grid para desktop */}
       <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-6xl w-full p-4 mx-auto">
         {b.map((blog) => (
-          <FeatureCard
+          // <FeatureCard
+          //   key={blog._id}
+          //   image={blog.thumbnail || ""}
+          //   title={blog.title}
+          //   description={blog.description}
+          //   showGlitch={true}
+          //   showBloodDrip={true}
+          //   onClick={() => router.push(`/blog/${blog._id}/detail`)}
+          //   className="w-full lg:w-[320px] cursor-pointer"
+          // />
+          <VhsCard
             key={blog._id}
-            image={blog.thumbnail || ""}
             title={blog.title}
-            description={blog.description}
-            showGlitch={true}
-            showBloodDrip={true}
-            onClick={() => router.push(`/blog/${blog._id}/detail`)}
-            className="w-full lg:w-[320px] cursor-pointer"
+            excerpt={blog.description}
+            image={blog.thumbnail ?? "assets/default-bg-blog.jpg"}
+            author={blog.user[0]?.name ?? ""}
+            authorAvatar={blog.user[0]?.avatar ?? ""}
+            date={blog.createdAt}
+            category={blog.category?.name ?? ""}
+            views={10}
+            likes={blog.likes.length}
+            comments={10}
           />
         ))}
 

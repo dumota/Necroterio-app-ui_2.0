@@ -24,7 +24,7 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
     };
 
     const iconElement = React.isValidElement(icon)
-      ? React.cloneElement(icon as React.ReactElement, { size: iconSizes[size] })
+      ? React.cloneElement(icon as React.ReactElement)
       : icon;
 
     return (

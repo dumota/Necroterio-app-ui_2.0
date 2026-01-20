@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import FiltersSection from "./components/FiltersSection";
 import HeaderListBlogs from "./components/Header";
 import NotFound from "./components/notFound";
+import VhsCard from "@/components/terrorui/vhsCard";
 
 
 
@@ -31,14 +32,27 @@ export default function ListBlogs({ blogs }: { blogs: IBlog[] }) {
                     <>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                             {data?.data?.blogs?.map((blog) => (
-                                <FeatureCard
+                                // <FeatureCard
+                                //     key={blog._id}
+                                //     title={blog.title}
+                                //     description={blog.description}
+                                //     image={blog.thumbnail ?? "assets/default-bg-blog.jpg"}
+                                //     onClick={() => {
+                                //         router.push(`/blog/${blog._id}`);
+                                //     }}
+                                // />
+                                <VhsCard
                                     key={blog._id}
                                     title={blog.title}
-                                    description={blog.description}
+                                    excerpt={blog.description}
                                     image={blog.thumbnail ?? "assets/default-bg-blog.jpg"}
-                                    onClick={() => {
-                                        router.push(`/blog/${blog._id}`);
-                                    }}
+                                    author={blog.user?.name ?? ""}
+                                    authorAvatar={blog.user?.avatar ?? ""}
+                                    date={blog.createdAt}
+                                    category={blog.category?.name ?? ""}
+                                    views={10}
+                                    likes={blog.likes.length}
+                                    comments={10}
                                 />
                             ))}
                         </div>

@@ -67,6 +67,16 @@
   --blood-dark: 0 90% 20%;
   --blood-light: 0 80% 50%;
   --toxic: 120 100% 35%;
+  --toxic-50: 120 100% 95%;
+  --toxic-100: 120 100% 90%;
+  --toxic-200: 120 100% 80%;
+  --toxic-300: 120 100% 65%;
+  --toxic-400: 120 100% 50%;
+  --toxic-500: 120 100% 40%;
+  --toxic-600: 120 100% 35%;
+  --toxic-700: 120 100% 28%;
+  --toxic-800: 120 100% 20%;
+  --toxic-900: 120 100% 12%;
   --bone: 40 20% 85%;
 
   --radius: 0.25rem;
@@ -245,6 +255,103 @@ h6 {
     animation: static-noise 0.5s steps(10) infinite;
   }
 
+  /* TV Static/Chuvisco Effect */
+  .tv-static {
+    position: relative;
+    background: #000;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .tv-static::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='tvNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23tvNoise)'/%3E%3C/svg%3E"),
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.1) 0px,
+        transparent 0px,
+        transparent 2px,
+        rgba(255, 255, 255, 0.05) 2px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.1) 0px,
+        transparent 0px,
+        transparent 2px,
+        rgba(255, 255, 255, 0.05) 2px
+      );
+    background-size: 200px 200px, 100% 100%, 100% 100%;
+    animation: tv-static-noise 0.1s steps(8) infinite;
+    opacity: 0.8;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+
+  .tv-static::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes tv-static-noise {
+    0% { 
+      background-position: 0% 0%, 0 0, 0 0;
+      opacity: 0.8;
+    }
+    10% { 
+      background-position: 10% 20%, 1px 0, 0 1px;
+      opacity: 0.9;
+    }
+    20% { 
+      background-position: 20% 40%, 2px 1px, 1px 2px;
+      opacity: 0.7;
+    }
+    30% { 
+      background-position: 30% 10%, 1px 2px, 2px 1px;
+      opacity: 0.85;
+    }
+    40% { 
+      background-position: 40% 60%, 3px 1px, 1px 3px;
+      opacity: 0.9;
+    }
+    50% { 
+      background-position: 50% 30%, 2px 3px, 3px 2px;
+      opacity: 0.75;
+    }
+    60% { 
+      background-position: 60% 70%, 4px 2px, 2px 4px;
+      opacity: 0.88;
+    }
+    70% { 
+      background-position: 70% 50%, 3px 4px, 4px 3px;
+      opacity: 0.82;
+    }
+    80% { 
+      background-position: 80% 15%, 5px 3px, 3px 5px;
+      opacity: 0.9;
+    }
+    90% { 
+      background-position: 90% 80%, 4px 5px, 5px 4px;
+      opacity: 0.78;
+    }
+    100% { 
+      background-position: 100% 100%, 6px 4px, 4px 6px;
+      opacity: 0.8;
+    }
+  }
+
   .font-helpme {
     font-family: var(--font-helpme), sans-serif;
   }
@@ -261,5 +368,21 @@ h6 {
 
   .animate-scroll {
     animation: scroll-film var(--scroll-duration, 30s) linear infinite;
+  }
+
+  /* REC Indicator Pulse */
+  @keyframes rec-pulse {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: 0 0 8px hsl(0 85% 40% / 0.8), 0 0 16px hsl(0 85% 40% / 0.4);
+    }
+    50% {
+      opacity: 0.6;
+      box-shadow: 0 0 4px hsl(0 85% 40% / 0.4), 0 0 8px hsl(0 85% 40% / 0.2);
+    }
+  }
+
+  .rec-pulse {
+    animation: rec-pulse 1.5s ease-in-out infinite;
   }
 }

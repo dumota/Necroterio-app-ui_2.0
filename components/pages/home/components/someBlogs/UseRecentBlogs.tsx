@@ -244,6 +244,30 @@ export const useRecentBlogs = () => {
             updatedAt: new Date().toISOString(),
             __v: 0,
         },
+        {
+            _id: "ex11",
+            title: "O Passageiro Fantasma",
+            description: "Relatos de motoristas que pegaram carona com um passageiro que desapareceu misteriosamente.",
+            thumbnail: "",
+            likes: ["dsadsad","dsadsad","dsadsad"],
+            status: true,
+            avaliation: true,
+            user: [],
+            content: "",
+            category: {
+                _id: "",
+                name: "Terror",
+                thumbnail: "",
+                rotateStyle: "0",
+                marginStyle: "0",
+                createdAt: "",
+                updatedAt: "",
+                __v: 0,
+            },
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            __v: 0,
+        },
     ];
 
     const nextBlog = () => {
